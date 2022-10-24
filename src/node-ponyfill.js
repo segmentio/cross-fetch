@@ -1,4 +1,4 @@
-const nodeFetch = require('node-fetch')
+const nodeFetch = require('node-fetch-cjs')
 const realFetch = nodeFetch.default || nodeFetch
 
 const fetch = function (url, options) {

@@ -678,12 +678,6 @@ function addFetchSuite () {
       expect(headers.get('Content-Type')).to.equal(null)
     })
 
-    it('should convert field name to string on set and get', () => {
-      const headers = new Headers()
-      headers.set(1 as any, 'application/json')
-      expect(headers.has('1')).to.equal(true)
-      expect(headers.get(1 as any)).to.equal('application/json')
-    })
 
     it('should convert field value to string on set and get', () => {
       const headers = new Headers()
