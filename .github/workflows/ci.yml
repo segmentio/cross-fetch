@@ -9,12 +9,12 @@ on:
 jobs:
   install:
     name: Install
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744  # v3
     - name: Cache node_modules
       id: cacheModules
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c  # v3
       with:
         path: ~/.npm # this is cache where npm installs from before going out to the network
         key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
@@ -32,10 +32,10 @@ jobs:
   security:
     name: Check Security
     needs: [install]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744  # v3
+    - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c  # v3
       with:
         path: ~/.npm # this is cache where npm installs from before going out to the network
         key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}

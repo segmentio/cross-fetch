@@ -5,20 +5,20 @@ on: [workflow_call]
 jobs:
   test:
     name: Test specs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     strategy:
       fail-fast: false
       matrix:
         node-version: [10.x, 12.x, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744  # v3
+    - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c  # v3
       with:
         path: ~/.npm # this is cache where npm installs from before going out to the network
         key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610  # v3
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install --prefer-offline
@@ -26,10 +26,10 @@ jobs:
 
   lint:
     name: Code Lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744  # v3
+    - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c  # v3
       with:
         path: ~/.npm # this is cache where npm installs from before going out to the network
         key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
@@ -38,10 +38,10 @@ jobs:
 
   typecheck:
     name: Types
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744  # v3
+    - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c  # v3
       with:
         path: ~/.npm # this is cache where npm installs from before going out to the network
         key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
